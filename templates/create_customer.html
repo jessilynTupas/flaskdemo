@@ -1,0 +1,79 @@
+{%extends 'base.html'%}
+{%block title%}Create Customer{%endblock%}
+
+{%block content%}
+<div class="card offset-2 col-8">
+    <div class="card-header">
+      <h3 class="float-start">Create Customer</h3>
+      <a class="btn btn-secondary float-end" href="{{url_for('logout')}}">Logout</a>
+      <h3 class="float-end">Username: {{username}}</h3>
+      
+    </div>
+    <div class="card-body">
+      <form action="/createcustomer" method="POST">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">First Name</label>
+                <input type="text" name="FirstName" class="form-control" id="exampleFormControlInput1" placeholder="First Name">
+              </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput2" class="form-label">Middle Name</label>
+                  <input type="text" name="MiddleName" class="form-control" id="exampleFormControlInput2" placeholder="Middle Name">
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput3" class="form-label">Last Name</label>
+                  <input type="text" name="LastName" class="form-control" id="exampleFormControlInput3" placeholder="Last Name">
+                </div>
+              </div>
+              <button class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <hr>
+  <div class="card offset-2 col-8">
+    <div class="card-header">
+      Customer Table
+    </div>
+    <div class="card-body">
+      <form action="/createcustomer" method="POST">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers%}
+                        <tr>
+                            <td>{{customer.FirstName}}</td>
+                            <td>{{customer.MiddleName}}</td>
+                            <td>{{customer.LastName}}</td>
+                            <td><a class="btn btn-primary" href="{{url_for('edit',id=customer.id)}}">Edit</a><a class="btn btn-primary" href="{{url_for('delete',id=customer.id)}}">Delete</a></td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{%endblock%}

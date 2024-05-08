@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{%block title%}Sign up{%endblock%}
+
+{%block content%}
+<div class="card offset-2 col-8">
+    <div class="card-header">
+      Signup
+    </div>
+    <div class="card-body">
+      <form action="/signup" method="POST">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" id="exampleFormControlInput1" placeholder="Username">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput2" class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control" id="exampleFormControlInput2" placeholder="Password">
+                </div>
+              </div>
+            </div>
+          </div>
+        <button type="submit" class="btn btn-primary">Sign up</button>
+      </form>
+    </div>
+  </div>
+{%endblock%}

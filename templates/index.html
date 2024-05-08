@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block title%}Home Page{%endblock%}
+
+{%block content%}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">
+        {{ message }}
+      </div>
+      <script>
+        setTimeout(function() {
+          document.querySelector('.alert').remove();
+        }, 5000);
+      </script>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+    <h3>Home Page</h3>
+    <h4>Username: {{username}}</h4>
+    <p>Go to <a href="{{url_for('createcustomer')}}">Create Customer</a></p>
+{%endblock%}
